@@ -76,44 +76,42 @@ Client-server chat applications are foundational to real-time communication over
 
 ### Program:
 
-### Client:
+## Program :
+#### Developed by: HARISH S
+#### Reg no: 212223230071
+## Client
 ```
-KEERTHIVASAN M
-212223100021
-
-import socket
-s=socket.socket()
-s.bind(('localhost',8000))
-s.listen(5)
-c,addr=s.accept()
-size=int(input("Enter number of frames to send : "))
-l=list(range(size))
-s=int(input("Enter Window Size : "))
-st=0
-i=0
-while True:
- while(i<len(l)):
- st+=s
- c.send(str(l[i:st]).encode())
- ack=c.recv(1024).decode()
- if ack:
- print(ack)
- i+=s
-```
-### Server:
-```
-import socket
-s=socket.socket()
-s.connect(('localhost',8000))
+import socket 
+s=socket.socket() 
+s.connect(('localhost',8000)) 
 while True: 
- print(s.recv(1024).decode())
- s.send("acknowledgement recived from the server".encode())
+    msg=input("Client > ") 
+    s.send(msg.encode()) 
+    print("Server > ",s.recv(1024).decode()) 
 ```
-### Output:
-## Client:
-![Uploading image.png…]()
-### Server:
-![Uploading image.png…]()
+## Server
+```
+import socket 
+s=socket.socket() 
+s.bind(('localhost',8000)) 
+s.listen(5) 
+c,addr=s.accept() 
+while True: 
+            ClientMessage=c.recv(1024).decode() 
+            print("Client > ",ClientMessage) 
+            msg=input("Server > ") 
+            c.send(msg.encode())
+```
+
+## Output:
+### Client
+
+![{9049DBB5-8A33-46F7-9945-6B27D15B011D}](https://github.com/user-attachments/assets/b440717e-2986-4354-b91d-ec291e9d35de)
+
+### Server
+
+![{55AFA3A4-AE92-42CE-90F5-0AC63AC8F7BF}](https://github.com/user-attachments/assets/a0d43aad-3cfc-4d65-beeb-5a904b5d9364)
+
 
 ## Result:
 
